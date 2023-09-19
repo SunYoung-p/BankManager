@@ -4,6 +4,8 @@
 
 using namespace std;
 
+Account::Account() : ID(0), Money(0), Name(NULL) {}
+
 Account::Account(int id, char* name, int money) : ID(id), Money(money)
 {
 	int len = strlen(name);
@@ -46,7 +48,7 @@ int Account::GetMoney()
 }
 int Account::SetMoney(int money)
 {
-	Money = money;
+	Money += money;
 	
 	return Money;
 }

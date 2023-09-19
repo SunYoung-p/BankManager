@@ -4,9 +4,10 @@ class Account
 {
 private:
 	int ID;
-	char* Name;
+	char *Name;
 	int Money;
 public:
+	Account();
 	Account(int id, char* name, int money);
 	~Account();
 	int GetID();

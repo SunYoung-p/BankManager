@@ -4,15 +4,22 @@
 
 using namespace std;
 
-BankManager::BankManager()
+BankManager::BankManager() : AcntListCnt(0), AcntListLen(10)
 {
-
+	for (int i = 0; i < AcntListLen; i++)
+		AcntList[i] = NULL;
 }
 
 BankManager::~BankManager()
 {
-	for (int i = 0; i < data->ACNT_LIST_LEN; i++)
-		delete AcntList[i];
+	for (int i = 0; i < AcntListLen; i++)
+	{
+		if (AcntList[i] != NULL)
+		{
+			delete AcntList[i];
+	//		cout << "AcntList[" << i << "] Delete 시도" << endl;
+		}
+	}
 }
 
 void BankManager::PrintMenu()
@@ -32,11 +39,11 @@ int BankManager::Service(int order)
 	{
 	case Data::MAKE: MakeAccnt();  break;
 
-		case Data::DEPOSIT: break;
+	case Data::DEPOSIT: Deposit();  break;
 
-		case Data::WITHDRAW: break;
+	case Data::WITHDRAW: Withdraw(); break;
 
-		case Data::INQUIRE: break;
+		case Data::INQUIRE: Inquire();  break;
 
 		case Data::EXIT:
 		default: break;
@@ -49,8 +56,7 @@ int BankManager::Service(int order)
 void BankManager::MakeAccnt()
 {
 	int id, money;
-	char* name;
-	name = new char[data->NAME_LEN]; 
+	char name[20];
 
 	cout << "\n[입  금]" << endl;
 	cout << "계좌ID : ";
@@ -62,6 +68,76 @@ void BankManager::MakeAccnt()
 
 	Account* acnt = new Account(id, name, money);
 	
-	AcntList[0] = acnt; // todo. 배열에 새로 만든 account 넣기
+	AcntList[AcntListCnt] = acnt; 
+	AcntListCnt++;
 
+}
+
+void BankManager::Inquire()
+{
+
+	for (int i = 0; i < AcntListLen; i++)
+	{
+		if (AcntList[i] == NULL)
+			break;
+
+		cout << "\n이 름 : " << AcntList[i]->GetName() << endl;
+		cout << "금 액 : " << AcntList[i]->GetMoney() << endl;
+	}
+}
+
+int BankManager::Deposit()
+{
+	int id, money;
+
+	cout << "\n입금 ID 입력 : ";
+	cin >> id;
+	cout << "입 금 액 : ";
+	cin >> money;
+
+	for (int i = 0; i < AcntListLen; i++)
+	{
+		if (AcntList[i] == NULL)
+			break;
+		
+		if (AcntList[i]->GetID() == id)
+		{
+			AcntList[i]->SetMoney(money);
+			cout << money << " 입금하여 총 " << AcntList[i]->GetMoney() << "원 입니다." << endl;
+
+			return AcntList[i]->GetMoney();
+		}
+	}
+
+	cout << "입금 실패, ID 확인하세요" << endl;
+
+	return -1;
+}
+
+int BankManager::Withdraw()
+{
+	int id, money;
+
+	cout << "\n출금 ID 입력 : ";
+	cin >> id;
+	cout << "출 금 액 : ";
+	cin >> money;
+
+	for (int i = 0; i < AcntListLen; i++)
+	{
+		if (AcntList[i] == NULL)
+			break;
+
+		if (AcntList[i]->GetID() == id  &&  money >=0)
+		{
+			AcntList[i]->SetMoney(money * -1);
+			cout << money << " 출금하여 총 " << AcntList[i]->GetMoney() << "원 입니다." << endl;
+
+			return AcntList[i]->GetMoney();
+		}
+	}
+
+	cout << "출금 실패, ID 확인하세요" << endl;
+
+	return -1;
 }
