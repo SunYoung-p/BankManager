@@ -5,3 +5,9 @@ BankManager/.vs/BankManager/v14/.suo
 *.opendb
 *.tlog
 *.vcxproj
+*.pdb
+BankManager/.vs/BankManager/v14/.suo
+*.db
+*.vcxproj
+*.filters
+*.tlog
