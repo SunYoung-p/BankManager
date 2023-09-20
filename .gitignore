@@ -1,13 +1,12 @@
 
+*.db
 *.obj
-BankManager/.vs/BankManager/v14/.suo
-*.db
-*.opendb
+*.log
+*.obj
+*.log
 *.tlog
-*.vcxproj
+*.obj
+*.idb
+*.exe
+*.ilk
 *.pdb
-BankManager/.vs/BankManager/v14/.suo
-*.db
-*.vcxproj
-*.filters
-*.tlog
