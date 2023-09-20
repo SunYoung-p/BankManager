@@ -16,8 +16,9 @@ BankManager::~BankManager()
 	{
 		if (AcntList[i] != NULL)
 		{
+			//cout << "AcntList[" << i << "] Delete 시도" << endl;
+			
 			delete AcntList[i];
-	//		cout << "AcntList[" << i << "] Delete 시도" << endl;
 		}
 	}
 }

@@ -15,6 +15,7 @@ Account::Account(int id, char* name, int money) : ID(id), Money(money)
 
 Account::~Account()
 {
+	//cout << Name << "가 delete 됩니다." << endl;
 	delete[] Name;
 }
 
