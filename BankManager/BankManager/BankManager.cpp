@@ -128,7 +128,7 @@ int BankManager::Withdraw()
 	{
 		if (AcntList[i] == NULL)
 			break;
-		//
+		
 		if (AcntList[i]->GetID() == id  &&  money >=0)
 		{
 			AcntList[i]->SetMoney(money * -1);
