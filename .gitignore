@@ -1,0 +1,7 @@
+
+*.obj
+BankManager/.vs/BankManager/v14/.suo
+*.db
+*.opendb
+*.tlog
+*.vcxproj
