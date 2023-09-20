@@ -16,3 +16,4 @@
 *.sin
 *.sln
 *.filters
+/BankManager/.vs/BankManager/v14/.suo
