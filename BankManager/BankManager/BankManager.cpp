@@ -142,3 +142,15 @@ int BankManager::Withdraw()
 
 	return -1;
 }
+
+
+int BankManager::SetAcntList(Account** val)
+{
+	for (int i = 0; i < AcntListCnt; i++)
+	{
+		AcntList[i] = new Account();
+		AcntList[i] = val[i];
+	}
+
+	return AcntListCnt;
+}

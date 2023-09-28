@@ -13,7 +13,7 @@ public:
 	int GetID();
 	int SetID(int id);
 	char* GetName();
-	char* SetName(char* name);
+	char* SetName(const char* name);
 	int GetMoney();
 	int SetMoney(int money);
 };

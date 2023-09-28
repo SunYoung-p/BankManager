@@ -4,8 +4,12 @@
 int main()
 {
 	BankManager main;
+	FileManager file("Todo.txt");
 	Customer customer;
 
+	main.SetAcntListCnt(file.LoadData());
+	main.SetAcntList(file.GetDataList());
+	
 	while(true)
 	{
 		main.PrintMenu();
@@ -18,6 +22,8 @@ int main()
 
 		cout << "\n\n";
 	}
+
+	file.SaveData(main.GetAcntListCnt(), main.GetAcntList());
 
 	return 0;
 }

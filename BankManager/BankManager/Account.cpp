@@ -33,7 +33,7 @@ char* Account::GetName()
 {
 	return Name;
 }
-char* Account::SetName(char* name)
+char* Account::SetName(const char* name)
 {
 	delete[] Name;
 

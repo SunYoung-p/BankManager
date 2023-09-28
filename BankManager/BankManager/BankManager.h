@@ -18,4 +18,8 @@ public:
 	void Inquire();
 	int Deposit();
 	int Withdraw();
+	void SetAcntListCnt(int n) { AcntListCnt = n; }
+	int GetAcntListCnt() { return AcntListCnt; }
+	Account** GetAcntList() { return AcntList; }
+	int SetAcntList(Account**);
 };
