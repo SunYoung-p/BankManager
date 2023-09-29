@@ -3,9 +3,9 @@
 
 using namespace std;
 
-Account::Account() : ID(0), Money(0), Name(NULL), Rate(1) {}
+Account::Account() : IsCredit(false), ID(0), Money(0), Name(NULL), Rate(1) {}
 
-Account::Account(int id, char* name, int money, int rate) : ID(id), Money(money), Rate(rate)
+Account::Account(bool IsCreditAcnt, int id, const char* name, int money, int rate) : IsCredit(IsCreditAcnt), ID(id), Money(money), Rate(rate)
 {
 	int len = strlen(name);
 	Name = new char[len + 1];

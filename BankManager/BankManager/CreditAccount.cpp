@@ -12,6 +12,7 @@ void CreditAccount::MakeAcnt()
 	cout << "이자율 입력 : "; cin >> rate;
 	cout << "신용등급 입력 (A:1, B:2, C:3, D:4) :  "; cin >> level;
 
+	this->SetIsCredit(true);
 	this->SetID(id);
 	this->SetName(name.c_str());
 	this->SetMoney(money);

@@ -9,11 +9,12 @@ private:
 	char *Name;
 	int Money;
 	double Rate;
+	bool IsCredit;
 
 public:
 
 	Account();
-	Account(int id, char* name, int money, int Rate);
+	Account(bool IsCreditAcnt, int id, const char* name, int money, int Rate);
 	~Account();
 	int GetID();
 	int SetID(int id);
@@ -25,4 +26,6 @@ public:
 	void SetRate(double rate) { Rate = rate; }
 	virtual void MakeAcnt();
 	virtual int GetDepositMoney(int);
+	void SetIsCredit(bool creditornot) { IsCredit = creditornot; }
+	bool GetIsCredit() { return IsCredit; }
 };

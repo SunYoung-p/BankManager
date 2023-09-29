@@ -27,24 +27,36 @@ int FileManager::LoadData()
 
 	for (int i = 0; i < cnt; i++)
 	{
-		Account* val = new Account();	
 		int id;
 		string name;
 		int money;
 		int rate;
+		int level;
+		bool IsCredit;
 
-		File >> id;
-		File >> name;
-		File >> money;
-		File >> rate;
+		File >> IsCredit;
 
-		val->SetID(id);
-		val->SetName(name.c_str());
-		val->SetMoney(money);
-		val->SetRate(rate);
+		if (IsCredit)
+		{
+			File >> id;
+			File >> name;
+			File >> money;
+			File >> rate;
+			File >> level;
 
-		LoadList[i] = new Account();
-		LoadList[i] = val;
+			CreditAccount* acnt = new CreditAccount(IsCredit, id, name.c_str(), money, rate, level);
+			LoadList[i] = acnt;
+		}
+		else
+		{
+			File >> id;
+			File >> name;
+			File >> money;
+			File >> rate;
+
+			Account* acnt = new Account(IsCredit, id, name.c_str(), money, rate);
+			LoadList[i] = acnt;
+		}
 	}
 
 
@@ -70,11 +82,15 @@ void FileManager::SaveData(int cnt, Account** Accnt)
 	
 	for (int i = 0; i < cnt; i++)
 	{
+		File << Accnt[i]->GetIsCredit() << endl;
 		File << Accnt[i]->GetID() << endl;
 		string name(Accnt[i]->GetName());
 		File << name << endl;
 		File << Accnt[i]->GetMoney() << endl;
-		File << Accnt[i]->GetRate() << endl; // todo, Virtual로 Account와 CreditAccount에 data save 추가하기
+		File << Accnt[i]->GetRate() << endl;
+
+		if (Accnt[i]->GetIsCredit())
+			File << static_cast<CreditAccount*>(Accnt[i])->GetLevel();
 	}
 
 	File.close();

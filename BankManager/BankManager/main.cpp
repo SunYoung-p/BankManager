@@ -7,8 +7,8 @@ int main()
 	FileManager file("Todo.txt");
 	Customer customer;
 
-	//main.SetAcntListCnt(file.LoadData());
-	//main.SetAcntList(file.GetDataList());
+	main.SetAcntListCnt(file.LoadData());
+	main.SetAcntList(file.GetDataList());
 	
 	while(true)
 	{
@@ -23,7 +23,7 @@ int main()
 		cout << "\n\n";
 	}
 
-	//file.SaveData(main.GetAcntListCnt(), main.GetAcntList());
+	file.SaveData(main.GetAcntListCnt(), main.GetAcntList());
 
 	return 0;
 }

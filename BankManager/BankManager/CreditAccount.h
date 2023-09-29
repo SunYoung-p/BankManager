@@ -11,8 +11,8 @@ private:
 
 public:
 	CreditAccount() : Account() {}
-	CreditAccount(int id, char* name, int money, int rate, int level)
-		: Account(id, name, money, rate), Level(level)
+	CreditAccount(bool IsCreditAcnt, int id, const char* name, int money, int rate, int level)
+		: Account(IsCreditAcnt, id, name, money, rate), Level(level)
 	{
 
 	}
