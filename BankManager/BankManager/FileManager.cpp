@@ -31,14 +31,17 @@ int FileManager::LoadData()
 		int id;
 		string name;
 		int money;
+		int rate;
 
 		File >> id;
 		File >> name;
 		File >> money;
+		File >> rate;
 
 		val->SetID(id);
 		val->SetName(name.c_str());
 		val->SetMoney(money);
+		val->SetRate(rate);
 
 		LoadList[i] = new Account();
 		LoadList[i] = val;
@@ -71,6 +74,7 @@ void FileManager::SaveData(int cnt, Account** Accnt)
 		string name(Accnt[i]->GetName());
 		File << name << endl;
 		File << Accnt[i]->GetMoney() << endl;
+		File << Accnt[i]->GetRate() << endl; // todo, Virtual로 Account와 CreditAccount에 data save 추가하기
 	}
 
 	File.close();

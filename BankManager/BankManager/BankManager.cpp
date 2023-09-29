@@ -56,22 +56,31 @@ int BankManager::Service(int order)
 
 void BankManager::MakeAccnt()
 {
-	int id, money;
-	char name[20];
+	int sel;
 
-	cout << "\n[입  금]" << endl;
-	cout << "계좌ID : ";
-	cin >> id;
-	cout << "이 름 : ";
-	cin >> name;
-	cout << "입금액 : ";
-	cin >> money;
+	cout << endl << "[계좌 종류 선택]" << endl;
+	cout << "(1) 일반 계좌" << endl;
+	cout << "(2) 신용 등급 계좌" << endl;
+	cout << "선택 [1, 2]  :  ";
 
-	Account* acnt = new Account(id, name, money);
-	
-	AcntList[AcntListCnt] = acnt; 
-	AcntListCnt++;
+	cin >> sel;
 
+	if (sel == 1)
+	{
+		Account* acnt = new Account();
+		acnt->MakeAcnt();
+
+		AcntList[AcntListCnt] = acnt;
+		AcntListCnt++;
+	}
+	else if (sel == 2)
+	{
+		CreditAccount* acnt = new CreditAccount();
+		acnt->MakeAcnt();
+
+		AcntList[AcntListCnt] = acnt;
+		AcntListCnt++;
+	}
 }
 
 void BankManager::Inquire()
@@ -103,7 +112,7 @@ int BankManager::Deposit()
 		
 		if (AcntList[i]->GetID() == id)
 		{
-			AcntList[i]->SetMoney(money);
+			AcntList[i]->SetMoney(AcntList[i]->GetDepositMoney(money));
 			cout << money << " 입금하여 총 " << AcntList[i]->GetMoney() << "원 입니다." << endl;
 
 			return AcntList[i]->GetMoney();

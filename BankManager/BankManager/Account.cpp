@@ -1,12 +1,11 @@
 #include "Account.h"
-#include <iostream>
-#include <string>
+
 
 using namespace std;
 
-Account::Account() : ID(0), Money(0), Name(NULL) {}
+Account::Account() : ID(0), Money(0), Name(NULL), Rate(1) {}
 
-Account::Account(int id, char* name, int money) : ID(id), Money(money)
+Account::Account(int id, char* name, int money, int rate) : ID(id), Money(money), Rate(rate)
 {
 	int len = strlen(name);
 	Name = new char[len + 1];
@@ -52,4 +51,26 @@ int Account::SetMoney(int money)
 	Money += money;
 	
 	return Money;
+}
+
+void Account::MakeAcnt()
+{
+	int id, money, rate;
+	string name;
+
+	cout << "\n[계좌 개설\n";
+	cout << "ID 입력 : "; cin >> id;
+	cout << "이름 입력 : "; cin >> name;
+	cout << "금액 입력 : "; cin >> money;
+	cout << "이자율 입력 : "; cin >> rate;
+
+	this->SetID(id);
+	this->SetName(name.c_str());
+	this->SetMoney(money);
+	this->SetRate(rate);
+}
+
+int Account::GetDepositMoney(int money)
+{
+	return money * (1 + Rate / 100);
 }

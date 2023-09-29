@@ -1,6 +1,7 @@
 #pragma once
 #include "Data.h"
 #include "Account.h"
+#include "CreditAccount.h"
 
 class BankManager
 {
