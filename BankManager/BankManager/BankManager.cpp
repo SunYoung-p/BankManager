@@ -157,7 +157,6 @@ int BankManager::SetAcntList(Account** val)
 {
 	for (int i = 0; i < AcntListCnt; i++)
 	{
-		AcntList[i] = new Account();
 		AcntList[i] = val[i];
 	}
 

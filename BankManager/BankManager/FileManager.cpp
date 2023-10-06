@@ -90,7 +90,7 @@ void FileManager::SaveData(int cnt, Account** Accnt)
 		File << Accnt[i]->GetRate() << endl;
 
 		if (Accnt[i]->GetIsCredit())
-			File << static_cast<CreditAccount*>(Accnt[i])->GetLevel();
+			File << static_cast<CreditAccount*>(Accnt[i])->GetLevel() << endl;
 	}
 
 	File.close();
